@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basket-deploy
+spec:
+  minReadySeconds: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: basket
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata: basket-pod
+    labels: 
+      app: basket
+    spec:
+      containers:
+        - name: basket
+          image: abhish9416/basket:1.0
+          ports:
+            - containerPort: 80
+            
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deploy
+spec:
+  minReadySeconds: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: order
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata: order-pod
+    labels: 
+      app: order
+    spec:
+      containers:
+        - name: order
+          image: abhish9416/order:1.0
+          ports:
+            - containerPort: 80
