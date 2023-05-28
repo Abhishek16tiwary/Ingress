@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speing-deploy
+spec:
+  minReadySeconds: 1
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: spring
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: spring-pod
+      labels: 
+        app: spring
+      spec:
+        containers:
+          - name: spring
+            image: abhish9416/spring:1.0
+            ports:
+              - containerPort: 8080
