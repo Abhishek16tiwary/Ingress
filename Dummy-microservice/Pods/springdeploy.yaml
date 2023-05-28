@@ -19,9 +19,9 @@ spec:
       name: spring-pod
       labels: 
         app: spring
-      spec:
-        containers:
-          - name: spring
-            image: abhish9416/spring:1.0
-            ports:
-              - containerPort: 8080
+    spec:
+      containers:
+        - name: spring
+          image: abhish9416/spring:1.0
+          ports:
+            - containerPort: 8080
