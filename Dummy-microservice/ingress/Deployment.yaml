@@ -17,8 +17,8 @@ spec:
   template:
     metadata: 
       name: basket-pod
-    labels: 
-      app: basket
+      labels: 
+        app: basket
     spec:
       containers:
         - name: basket
@@ -45,8 +45,8 @@ spec:
   template:
     metadata: 
       name: order-pod
-    labels: 
-      app: order
+      labels: 
+        app: order
     spec:
       containers:
         - name: order
